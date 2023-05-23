@@ -37,7 +37,7 @@ export const remove = async (id) => {
 
 export const update = async (id, params) => {
 	try {
-		PurchaserModel.updateOne(
+		await PurchaserModel.updateOne(
 			{
 				_id: id,
 			},
