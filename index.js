@@ -4,6 +4,7 @@ import prompt from 'prompt-sync'
 
 import { handleSuccessConnect, handleErrorConnect } from './utils/handlers.js'
 
+// Functions (procedures)
 import initDB from './utils/db/initDB.js'
 import makeJob from './utils/db/makeJob.js'
 import productLifecycle from './utils/db/analytics/productLifecycle.js'
@@ -11,7 +12,6 @@ import productRating from './utils/db/analytics/productRating.js'
 import makePurchase from './utils/db/procedures/makePurchase.js'
 import makeSupply from './utils/db/procedures/makeSupply.js'
 import changePurchaserBalance from './utils/db/procedures/changePurchaserBalance.js'
-import PurchaserModel from './models/Purchaser.js'
 
 dotenv.config()
 

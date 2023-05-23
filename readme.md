@@ -19,29 +19,35 @@ yarn install
 ## Documentation
 
 #### async function `changeProductCount`
-| Name          | Type    | Description  |
-| ------------- |-------| -----|
-| `providerId`  | `string`| The id of product provider |
-|  `productId`  | `string`| The id of product |
-| `count`       | `number`| The count (`integer`) of product changes in stock |
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `providerId`  | `string`      | No       | The id of product provider |
+| `productId`   | `string`      | No       | The id of product |
+| `count`       | `number`      | No       | The count `(integer)` of product changes in stock |
 
 #### async function `changePurchaserBalance`
-| Name          | Type          | Description         |
-| --------------|-------------| -----              |
-| `id`          | `string`      | The id of purchaser |
-| `value`       | `number`      | The value (`float toFixed 2`) of purchaser balance changing |
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `id`          | `string`      | No       |The id of purchaser |
+| `value`       | `number`      | No       |The value `(float toFixed 2)` of purchaser balance changing |
 
 #### async function `makeSupply`
-| Name          | Type         | Description  |
-| ------------- |--------| -----|
-| `providerId`  | `string` | The id of product provider |
-| `productId`   | `string` | The id of product |
-| `count`       | `number` | The count (`integer`) of product supplying to stock |
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `providerId`  | `string`      | No       |The id of product provider |
+| `productId`   | `string`      | No       |The id of product |
+| `count`       | `number`      | No       |The count `(integer)` of product supplying to stock |
 
 #### async function `makePurchase`
-| Name          | Type     | Description  |
-| ------------- |--------| -----|
-| `purchaserId` | `string` | The id of purchaser |
-| `providerId`  | `string` | The id of product provider |
-| `productId`   | `string` | The id of product |
-| `count`       | `number` | The count (`integer`) of the purchase of the products by the purchaser |
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `purchaserId` | `string`      | No       |The id of purchaser |
+| `providerId`  | `string`      | No       |The id of product provider |
+| `productId`   | `string`      | No       |The id of product |
+| `count`       | `number`      | No       |The count `(integer)` of the purchase of the products by the purchaser |
+
+#### async analytic function `productLifecycle`
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `periodStart` | `string`      | Yes      |The string in `date` format from what period |
+| `periodEnd`   | `string`      | Yes      |The string in `date` format up to what period |
