@@ -11,11 +11,18 @@ import changeProductCount from './changeProductCount.js'
 import changePurchaserBalance from './changePurchaserBalance.js'
 
 const makePurchase = async (purchaserId, providerId, productId, count) => {
-	const provider = await ProviderController.getOne(providerId)
+	if (!!!purchaserId || !!!providerId || !!!productId || !!!count) {
+		log.error('Expected 4 arguments', 'purchaserId, providerId, productId, count')
+		return
+	}
 
-	let purchaser = await PurchaserController.getOne(purchaserId)
-	let product = await ProductController.getOne(productId)
+	const provider = await ProviderController.getOne({ _id: providerId })
+
+	let purchaser = await PurchaserController.getOne({ _id: purchaserId })
+	let product = await ProductController.getOne({ _id: productId })
 	let purchased = 0
+
+	count = Number(count)
 
 	if (count <= 0) {
 		log.error('Purchase failed', `Count must be greater than 0 | Given ${count}`)
@@ -47,8 +54,8 @@ const makePurchase = async (purchaserId, providerId, productId, count) => {
 		await changePurchaserBalance(purchaserId, -product.price)
 
 		// Getting after changing values
-		product = await ProductController.getOne(productId)
-		purchaser = await PurchaserController.getOne(purchaserId)
+		purchaser = await PurchaserController.getOne({ _id: purchaserId })
+		product = await ProductController.getOne({ _id: productId })
 	}
 
 	if (purchased === 0) return
