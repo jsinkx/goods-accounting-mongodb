@@ -28,15 +28,14 @@ const productTurnover = async (periodStart = moment(0), periodEnd = moment()) =>
 				if (turnover[product.id] === undefined) {
 					turnover[product.id] = {
 						name: product.name,
-						supplies_sum: 0,
+						supplies_sum: -s.amount,
 						purchases_sum: 0,
-						providers: [],
+						providers: [provider.name],
 						purchasers: [],
 						profit: 0,
 					}
 				} else {
 					turnover[product.id].providers.push(provider.name)
-
 					turnover[product.id].supplies_sum = turnover[product.id].supplies_sum - s.amount
 				}
 			}
@@ -60,22 +59,24 @@ const productTurnover = async (periodStart = moment(0), periodEnd = moment()) =>
 					turnover[product.id] = {
 						name: product.name,
 						supplies_sum: 0,
-						purchases_sum: 0,
-						providers: [],
-						purchasers: [],
-						profit: 0,
+						purchases_sum: p.amount,
+						providers: [provider.name],
+						purchasers: [
+							`${purchaser.surname} ${purchaser.firstName}${
+								purchaser.patronymic !== undefined ? ' ' + purchaser.patronymic : ''
+							}`,
+						],
+						profit: p.amount * product.price,
 					}
 				} else {
+					turnover[product.id].purchases_sum = turnover[product.id].purchases_sum + p.amount
+					turnover[product.id].profit = turnover[product.id].profit + p.amount * product.price
 					turnover[product.id].providers.push(provider.name)
-
 					turnover[product.id].purchasers.push(
 						`${purchaser.surname} ${purchaser.firstName}${
 							purchaser.patronymic !== undefined ? ' ' + purchaser.patronymic : ''
 						}`
 					)
-
-					turnover[product.id].purchases_sum = turnover[product.id].purchases_sum + p.amount
-					turnover[product.id].profit = turnover[product.id].profit + p.amount * product.price
 				}
 			}
 		})
