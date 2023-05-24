@@ -51,3 +51,15 @@ yarn install
 |---------------|---------------|----------|-------------|
 | `periodStart` | `string`      | Yes      |The string in `date` format from what period |
 | `periodEnd`   | `string`      | Yes      |The string in `date` format up to what period |
+
+#### async analytic function `productTurnover`
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `periodStart` | `string`      | Yes      |The string in `date` format from what period |
+| `periodEnd`   | `string`      | Yes      |The string in `date` format up to what period |
+
+#### async analytic function `productRating`
+| Name          | Type          | Optional | Description |
+|---------------|---------------|----------|-------------|
+| `periodStart` | `string`      | Yes      |The string in `date` format from what period |
+| `periodEnd`   | `string`      | Yes      |The string in `date` format up to what period |
