@@ -12,6 +12,7 @@ import productRating from './utils/db/analytics/productRating.js'
 import makePurchase from './utils/db/procedures/makePurchase.js'
 import makeSupply from './utils/db/procedures/makeSupply.js'
 import changePurchaserBalance from './utils/db/procedures/changePurchaserBalance.js'
+import productTurnover from './utils/db/analytics/productTurnover.js'
 
 dotenv.config()
 
@@ -43,8 +44,10 @@ mongoose
 				await changePurchaserBalance(...args, true) // Example changePurchaserBalance 646bd9ac43bb5102e493491f 12.22
 			} else if (command.startsWith('productLifecycle')) {
 				await productLifecycle(...args) // Example productLifecycle 2023-05-22T21:08:01.448+00:00 2023-05-22T21:08:01.448+00:00
+			} else if (command.startsWith('productTurnover')) {
+				await productTurnover(...args) // Example productTurnover 2023-05-22T21:08:01.448+00:00 2023-05-22T21:08:01.448+00:00
 			} else if (command.startsWith('productRating')) {
-				await productRating()
+				await productRating(...args) // Example productRating 2023-05-22T21:08:01.448+00:00 2023-05-22T21:08:01.448+00:00
 			}
 		}
 	})
