@@ -4,9 +4,9 @@ import { ProductController, PurchasesController } from '../../../controllers/ind
 
 import log from '../../log.js'
 
-const rating = {}
-
 const productRating = async (periodStart = moment(0), periodEnd = moment()) => {
+	const rating = {}
+
 	const purchases = await PurchasesController.getAll()
 
 	await Promise.all(

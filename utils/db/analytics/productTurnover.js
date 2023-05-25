@@ -10,9 +10,9 @@ import {
 
 import log from '../../log.js'
 
-const turnover = {}
-
 const productTurnover = async (periodStart = moment(0), periodEnd = moment()) => {
+	const turnover = {}
+
 	// Supplies
 	const supplies = await SuppliesController.getAll()
 

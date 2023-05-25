@@ -10,9 +10,9 @@ import {
 
 import log from '../../log.js'
 
-const lifecycle = []
-
 const productLifecycle = async (periodStart = moment(0), periodEnd = moment()) => {
+	const lifecycle = []
+
 	// Supplies
 	const supplies = await SuppliesController.getAll()
 
